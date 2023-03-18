@@ -198,6 +198,7 @@ const db = getDatabase(app);
     function stopPlacingCoins(allPlayersRef, allCoinsRef) {
       set(pausedRef, true);
       set(placeCoin_pressedRef, false);
+      
       // resetCoins(allPlayersRef); //setting score element on screen to 0
       remove(allCoinsRef); // deleting refs from firebase
       
@@ -205,7 +206,6 @@ const db = getDatabase(app);
         delete coins[key]; //deleting local states of coins
       });
       console.log("Game Ended");
-      placeCoinsButton.style.cursor="pointer";
 
     }
 
@@ -290,6 +290,8 @@ const db = getDatabase(app);
           if(players[key].coins >= MAX_SCORE && MAX_SCORE) {
             stopPlacingCoins(allPlayersRef, allCoinsRef);
             //add DOM element
+            // placeCoinsButton.style.cursor="pointer";
+
             winnerName.innerHTML = `The winner is <span class='uppercase'>${players[key].name}<span/>!`;
           }
         })
@@ -396,6 +398,18 @@ const db = getDatabase(app);
         endgameButton.addEventListener("click", () => {
           stopPlacingCoins(allPlayersRef, allCoinsRef);
           resetCoins(allPlayersRef); //setting score element on screen to 0
+          // placeCoinsButton.style.cursor="pointer";
+
+        })
+
+        // onValue(pausedRef, (snapshot) => {
+        //   console.log("pausedRef "+snapshot.val())
+        // })
+        onValue(placeCoin_pressedRef, (snapshot) => {
+          console.log("placeCoin_pressedRef "+snapshot.val())
+          if(snapshot.val()) placeCoinsButton.style.cursor="not-allowed";
+          else placeCoinsButton.style.cursor="pointer";
+
         })
 
         
@@ -410,9 +424,8 @@ const db = getDatabase(app);
           playerId = user.uid;
           playerRef = ref(db, 'players/' + playerId);
           placeCoin_pressedRef = ref(db, 'placeCoin_pressed');
-          pausedRef = ref(db, 'paused');
+          pausedRef = ref(db, 'paused'); //check before spawning each coin
           maxScoreRef = ref(db, 'maxScore');
-          // if(!placeCoin_pressedRef) set(placeCoin_pressedRef, false);
           set(placeCoin_pressedRef, false);
           set(pausedRef, true);
           set(maxScoreRef, 10);
@@ -443,7 +456,7 @@ const db = getDatabase(app);
               const placeCoin_pressed = snapshot.val();
               // Check if the value is false and update it to true
               if (!placeCoin_pressed) {
-                placeCoinsButton.style.cursor="not-allowed";
+                // placeCoinsButton.style.cursor="not-allowed";
                 
                 set(placeCoin_pressedRef, true)
                 resetCoins(ref(db, 'players')); //setting score element on screen to 0
