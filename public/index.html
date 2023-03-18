@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css" type="text/css">
+
+    <script defer type="module" src="./app.js"></script>
+
+    <title>HangOut</title>
+</head>
+
+<body>
+  <!-- <div class="start-screen">
+  </div> -->
+  
+  <div class="container-outside">
+
+    <div class="container-inside">
+      <div class="winner-name"></div>
+      <div class="game-container"></div>
+    </div>
+    <div class="buttons">
+      <button class="place-coins-button">Place Coins</button>
+      <button class="endgame-button">End Game</button>
+    </div>
+  
+  </div>
+
+  <div class="player-info">
+    
+    <div>
+      <label for="player-name">Your name</label>
+      <input id="player-name" maxlength="10" type="text" />
+    </div>
+    <div>
+      <button id="player-color">Change Color</button>
+    </div>
+
+    
+  </div>
+  <div class="max-score-container">
+    <label for="player-name">Set Max Score</label>
+    <input type="number" id="max-score" min="1" value="10">
+  </div>
+
+    
+
+    
+
+
+    <!-- <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+        import { getAuth, signInAnonymously, onA } from 'https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js'
+        import { getDatabase } from 'https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js'
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyBElBL6blIgsk53ZhmZFjbjeIWsFrqez0M",
+          authDomain: "hangout-15bb2.firebaseapp.com",
+          databaseURL: "https://hangout-15bb2-default-rtdb.asia-southeast1.firebasedatabase.app",
+          projectId: "hangout-15bb2",
+          storageBucket: "hangout-15bb2.appspot.com",
+          messagingSenderId: "555424356700",
+          appId: "1:555424356700:web:de6fa8321a5aab95460999"
+        };
+      
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+      </script> -->
+
+</body>
+</html>

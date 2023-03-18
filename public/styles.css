@@ -1,0 +1,225 @@
+:root {
+  --scaling-number: 3;
+}
+
+* {
+  box-sizing:border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: linear-gradient(180deg, #64BEFF -50%, #6e96ff 69.71%, #2a65ff 150%);
+  font-family: 'Source Sans Pro', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.winner-name {
+  margin-top: 20px;
+  height: 20px;
+  color: white;
+  font-size: 19px;
+  font-weight: 700;
+  font-family: inherit;
+  text-align: center;
+  /* width: 620px; */
+  width: calc(240px*var(--scaling-number) - 100px);
+}
+
+.container-outside {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-inside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game-container {
+    height: 208px;
+    width: 240px;
+    margin: 180px 0;
+    background: url(./images/map.png) no-repeat;
+    transform: scale(var(--scaling-number));
+    image-rendering: pixelated;
+  }
+  
+.buttons {
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 20px 0;
+  /* width: 620px; */
+  width: calc(240px*var(--scaling-number) - 100px);
+}
+
+.endgame-button {
+  position: absolute;
+  right: 0;
+}
+
+.player-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 1em;
+  display: flex;
+  gap: 0.5em;
+  align-items: flex-end;
+  z-index: 2;
+}
+
+.max-score-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  z-index: 2;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+input, button {
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 18px;
+  height: 44px;
+  border-radius: 4px;
+  outline: 0;
+}
+
+input {
+  padding-left: 0.5em;
+  border: 2px solid #222034;
+  width: 150px;
+  text-transform: uppercase;
+}
+
+input:focus {
+  border-color: #f000ff;
+}
+
+button {
+  padding: 0 .5em;
+  border: 0;
+  background: #59ff5a;
+  border-bottom: 2px solid #1e830b;
+  cursor: pointer;
+}
+
+
+.place-coins-button {
+  cursor: pointer;
+  width: 200px;
+}
+
+.endgame-button {
+  background-color: rgb(216, 70, 70);
+  border-bottom: 2px solid #b30b0b;
+}
+
+.grid-cell {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+}
+
+.character {
+  transition: all 0.4s;
+}
+
+.character.you {
+    z-index: 1;
+  }
+  
+  .character.you .character_you-arrow {
+    display: block;
+}
+
+.character_you-arrow {
+  display: none;
+    position: absolute;
+    top: -18px;
+    left: 5px;
+    width: 7px;
+    height: 5px;
+    background: url(./images/arrow.png) no-repeat;
+  }
+  
+.character_sprite {
+  overflow: hidden;
+  top: -3px;
+  background: url(./images/characters.png);
+}
+.character[data-direction="right"] .character_sprite {
+  background-position-x: 16px;
+}
+.character[data-color="red"] .character_sprite {
+  background-position-y: -16px;
+}
+.character[data-color="orange"] .character_sprite {
+  background-position-y: -32px;
+}
+.character[data-color="yellow"] .character_sprite {
+background-position-y: -48px;
+}
+.character[data-color="green"] .character_sprite {
+background-position-y: -64px;
+}
+.character[data-color="purple"] .character_sprite {
+background-position-y: -80px;
+}
+
+.character_shadow {
+  background: url(./images/shadow.png);
+}
+
+.character_name-container {
+    position: absolute;
+    top: -12px;
+    left: -5px;
+    font-size: 5px;
+    padding: 1px 2px 1px;
+    border-radius: 3px;
+    background: #333;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .character_coins {
+    margin-left: 1px;
+    color: gold;
+  }
+  
+  .coin_sprite {
+    background: url(./images/coin.png);
+    animation: coinFloat 0.8s linear infinite alternate-reverse;
+  }
+  
+  @keyframes coinFloat {
+    from {transform: translateY(0)}
+    to {transform: translateY(5px)}
+  }
+
+  .coin_shadow {
+    background: url(./images/coin-shadow.png);
+  }
